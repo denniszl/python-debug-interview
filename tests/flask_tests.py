@@ -120,6 +120,18 @@ class BasicFunctionalityTestCase(unittest.TestCase):
         assert sorted(rv.allow) == ['GET', 'HEAD', 'OPTIONS', 'POST']
         assert rv.data == ''
 
+    def test_options_with_two_routes_work(self):
+        app = flask.Flask(__name__)
+        @app.route('/', methods=['GET', 'POST'])
+        def index():
+            return 'Hello World'
+        @app.route('/', methods=['PUT'])
+        def index2():
+            return 'Hello World2'
+        rv = app.test_client().open('/', method='OPTIONS')
+        assert sorted(rv.allow) == ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
+        assert rv.data == ''
+
     def test_request_dispatching(self):
         app = flask.Flask(__name__)
         @app.route('/')
