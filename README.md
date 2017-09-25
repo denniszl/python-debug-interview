@@ -21,7 +21,7 @@ pip install jsonschema mock
 
 ## The bug
 
-Take a look at https://github.com/jparyani/python-debug-interview/issues/1 and figure out how best to fix the bug.
+Take a look at https://github.com/denniszl/python-debug-interview/issues/1 and figure out how best to fix the bug.
 
 ## Tests
 
